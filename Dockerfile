@@ -7,4 +7,4 @@ WORKDIR /app
 COPY stock-updater.py stock-updater.py
 COPY config.yaml config.yaml
 
-CMD [ "python3", "stock-updater.py"]
+RUN [ "python3", "stock-updater.py"]
