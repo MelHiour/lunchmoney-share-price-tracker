@@ -18,8 +18,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - shell: cmd
-      name: Build the Docker image
+    - shell: bash
       env:
         POLIGON_API: ${{ secrets.POLIGON_API }}
         LUNCHMONEY_API: ${{ secrets.LUNCHMONEY_API }}
