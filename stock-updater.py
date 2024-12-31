@@ -3,6 +3,7 @@ import yaml
 import requests
 
 POLIGON_API = os.environ.get("POLIGON_API")
+print(POLIGON_API)
 LUNCHMONEY_API = os.environ.get("LUNCHMONEY_API")
 
 POLYGON_ENDPOINT = "https://api.polygon.io/v2/aggs/ticker/"
@@ -50,7 +51,6 @@ def get_stock_price_and_update_lunchmoney(
 
 if __name__ == "__main__":
     stocks_to_process = parse_yaml("config.yaml")
-    print(stocks_to_process)
     for stock in stocks_to_process["stocks"]:
         result = get_stock_price_and_update_lunchmoney(
             stock["stock_code"],
