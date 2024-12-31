@@ -1,6 +1,8 @@
 name: MAIN
 
 on:
+  schedule:
+    - cron: "30 23 * * *"
   push:
     branches: [ main ]
     paths-ignore:
