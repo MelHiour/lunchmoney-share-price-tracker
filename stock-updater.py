@@ -1,6 +1,5 @@
 import os
 import yaml
-import sys
 import requests
 
 POLIGON_API = os.environ.get("POLIGON_API")
@@ -13,11 +12,12 @@ LUNCHMONEY_ENDPOINT = "https://dev.lunchmoney.app/v1/assets/"
 def parse_yaml(filename):
     with open(filename) as file:
         result = yaml.load(file, Loader=yaml.FullLoader)
+        print(result)
     return result
 
 
 def get_poligon_endpoint(stock_code, apikey):
-    return POLYGON_ENDPOINT + stock_code + "/prev?adjusted=true&apiKey=" + apikey
+    return POLYGON_ENDPOINT + stock_code + "/prev?adjusted=true&apiKey=" + str(apikey)
 
 
 def get_lunchmoney_endpoint(asset_id):
