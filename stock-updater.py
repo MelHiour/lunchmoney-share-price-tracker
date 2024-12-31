@@ -46,7 +46,6 @@ def get_stock_price_and_update_lunchmoney(
 
 
 if __name__ == "__main__":
-    print(sys.argv)
     if len(sys.argv) > 1:
         POLIGON_API = sys.argv[1]
         LUNCHMONEY_API = sys.argv[2]
