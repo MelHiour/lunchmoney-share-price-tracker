@@ -10,13 +10,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  image-build:
-    needs: build-and-test
+  build_docker_images:
+    name: Build Docker Images
     runs-on: ubuntu-latest
-    
-    steps:
-      - name: Check Out Repo 
-        uses: actions/checkout@v2
 
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile
+
