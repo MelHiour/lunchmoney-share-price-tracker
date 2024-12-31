@@ -20,6 +20,6 @@ jobs:
 
     - name: Build the image
       env:
-        POLIGON_API: HELLO
-        LUNCHMONEY_API: WORLD
+        LUNCHMONEY_API: ${{ secrets.LUNCHMONEY_API }}
+        POLIGON_API: ${{ secrets.POLIGON_API }}
       run: docker build . --file Dockerfile --build-arg POLIGON_API="$POLIGON_API" --build-arg LUNCHMONEY_API="$LUNCHMONEY_API"
