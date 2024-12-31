@@ -12,12 +12,11 @@ LUNCHMONEY_ENDPOINT = "https://dev.lunchmoney.app/v1/assets/"
 def parse_yaml(filename):
     with open(filename) as file:
         result = yaml.load(file, Loader=yaml.FullLoader)
-        print(result)
     return result
 
 
 def get_poligon_endpoint(stock_code, apikey):
-    return POLYGON_ENDPOINT + stock_code + "/prev?adjusted=true&apiKey=" + str(apikey)
+    return POLYGON_ENDPOINT + stock_code + "/prev?adjusted=true&apiKey=" + apikey
 
 
 def get_lunchmoney_endpoint(asset_id):
@@ -51,6 +50,7 @@ def get_stock_price_and_update_lunchmoney(
 
 if __name__ == "__main__":
     stocks_to_process = parse_yaml("config.yaml")
+    print(stocks_to_process)
     for stock in stocks_to_process["stocks"]:
         result = get_stock_price_and_update_lunchmoney(
             stock["stock_code"],
