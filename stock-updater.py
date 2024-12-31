@@ -38,7 +38,7 @@ def calculate_value(stock_price, amount):
 def update_lunchmoney(asset_id, apikey, amount):
     print("update_lunchmoney")
     data = {"balance": amount}
-    headers = {"Authorization": apikey}
+    headers = {"Authorization": "Bearer "+apikey}
     endpoint = get_lunchmoney_endpoint(asset_id)
     return requests.put(endpoint, data=data, headers=headers).json()
 
