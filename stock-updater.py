@@ -6,6 +6,8 @@ import requests
 POLYGON_ENDPOINT: str = "https://api.polygon.io/v2/aggs/ticker/"
 LUNCHMONEY_ENDPOINT: str = "https://dev.lunchmoney.app/v1/assets/"
 
+logging.basicConfig(level=logging.INFO)
+
 
 def parse_yaml(filename: str) -> dict:
     logging.info("Parsing the yaml provided: {}".format(filename))
@@ -84,6 +86,5 @@ if __name__ == "__main__":
                 POLIGON_API,
                 LUNCHMONEY_API,
             )
-            print(result)
     else:
         raise BaseException("Too less attributes...")
