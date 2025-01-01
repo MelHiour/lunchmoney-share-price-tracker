@@ -6,7 +6,7 @@ The idea is to have a manually created account(s) in [lunchmoney.app](https://lu
 - Get the API key for [lunchmoney.app](https://lunchmoney.app) here https://my.lunchmoney.app/developers (free)
 - Get the API key for [polygon.io](https://polygon.io). Just register and they will give you one
 - Fork the repository
-- Create two new secreats in Settings - Secrets and variables - Actions - Repository secrets ([https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions](official guide)
+- Create two new secreats in Settings - Secrets and variables - Actions - Repository secrets ([https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions](official guide))
   - LUNCHMONEY_API
   - POLIGON_API  
 - Populate the [config.yaml](https://github.com/MelHiour/lunchmoney-share-price-tracker/blob/main/config.yaml) with data
