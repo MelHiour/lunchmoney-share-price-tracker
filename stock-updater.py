@@ -87,4 +87,4 @@ if __name__ == "__main__":
                 LUNCHMONEY_API,
             )
     else:
-        raise BaseException("Too less attributes...")
+        raise BaseException("Too less arguments...")
