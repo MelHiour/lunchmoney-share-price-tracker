@@ -16,8 +16,8 @@ The idea is to have a manually created account(s) in [lunchmoney.app](https://lu
      stock_code: AMZN < Stock you own
      amount: 600 < The amount of stocks
    - asset_id: 12343 < Next Asset
-     stock_code: AMZN
-     amount: 60  
+     stock_code: AAPL
+     amount: 300  
   ```
 - CI/CD pipeline will run at midnight everyday and on push to master
 
