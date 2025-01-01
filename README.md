@@ -20,3 +20,6 @@ The idea is to have a manually created account(s) in [lunchmoney.app](https://lu
      amount: 60  
   ```
 - CI/CD pipeline will run at midnight everyday and on push to master
+
+## Important
+- Updates account with EUR equivalent of share price
