@@ -1,6 +1,6 @@
 # AI generated tests! Not that bad...
 
-import pytest
+import pytest # type: ignore
 from unittest.mock import patch, mock_open
 import yaml
 import requests
