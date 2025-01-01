@@ -14,7 +14,7 @@ The idea is to have a manually created account(s) in [lunchmoney.app](https://lu
   stocks:
    - asset_id: 12345 < Asset ID from lunchmoney.app
      stock_code: AMZN < Stock you own
-     amount: 60 < The amount of stocks
+     amount: 600 < The amount of stocks
    - asset_id: 12343 < Next Asset
      stock_code: AMZN
      amount: 60  
