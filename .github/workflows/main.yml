@@ -2,7 +2,7 @@ name: MAIN
 
 on:
   schedule:
-    - cron: "30 23 * * *"
+    - cron: "30 09 * * *"
   push:
     branches: [ main ]
     paths-ignore:
