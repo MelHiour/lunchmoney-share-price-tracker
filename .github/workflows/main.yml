@@ -40,7 +40,7 @@ jobs:
       uses: jpetrucciani/mypy-check@master
       with:
         path: '.'
-        mypy_flags: '--config-file .mypy.ini'
+        mypy_flags: '--config-file mypy.ini'
 
   build_docker_images:
     name: Build Docker Images
