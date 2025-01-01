@@ -2,51 +2,62 @@ import sys
 import yaml
 import requests
 
-POLYGON_ENDPOINT = "https://api.polygon.io/v2/aggs/ticker/"
-LUNCHMONEY_ENDPOINT = "https://dev.lunchmoney.app/v1/assets/"
+POLYGON_ENDPOINT: str = "https://api.polygon.io/v2/aggs/ticker/"
+LUNCHMONEY_ENDPOINT: str = "https://dev.lunchmoney.app/v1/assets/"
 
 
-def parse_yaml(filename):
+def parse_yaml(filename: str) -> dict:
+    print("Parsing YAML")
     with open(filename) as file:
         result = yaml.load(file, Loader=yaml.FullLoader)
     return result
 
 
-def get_poligon_endpoint(stock_code, apikey):
+def get_poligon_endpoint(stock_code: str, apikey: str) -> str:
+    print("get_poligon_endpoint")
     return POLYGON_ENDPOINT + stock_code + "/prev?adjusted=true&apiKey=" + apikey
 
 
-def get_lunchmoney_endpoint(asset_id):
+def get_lunchmoney_endpoint(asset_id: int) -> str:
+    print("get_lunchmoney_endpoint")
     return LUNCHMONEY_ENDPOINT + str(asset_id)
 
 
-def get_stock_price(stock_code, apikey):
+def get_stock_price(stock_code: str, apikey: str) -> int:
+    print("get_stock_price")
     endpoint = get_poligon_endpoint(stock_code, apikey)
     previos_close_price = requests.get(endpoint).json()["results"][0]["c"]
     return previos_close_price
 
 
-def get_usd_to_eur_price(apikey):
+def get_usd_to_eur_price(apikey: str) -> int:
     currency_pair = "C:USDEUR"
     endpoint = get_poligon_endpoint(currency_pair, apikey)
     previos_close_price = requests.get(endpoint).json()["results"][0]["c"]
     return previos_close_price
 
 
-def calculate_value(stock_price, amount, ust_to_eur):
+def calculate_value(stock_price: int, amount: int, ust_to_eur: int) -> int:
+    print("calculate_value")
     return stock_price * amount * ust_to_eur
 
 
-def update_lunchmoney(asset_id, apikey, amount):
+def update_lunchmoney(asset_id: int, apikey: str, amount: int) -> dict:
+    print("update_lunchmoney")
     data = {"balance": amount}
-    headers = {"Authorization": "Bearer "+apikey}
+    headers = {"Authorization": "Bearer " + apikey}
     endpoint = get_lunchmoney_endpoint(asset_id)
     return requests.put(endpoint, data=data, headers=headers).json()
 
 
 def get_stock_price_and_update_lunchmoney(
-    stock_code, asset_id, volume, poligon_apikey, lunchmoney_apikey
-):
+    stock_code: str,
+    asset_id: int,
+    volume: int,
+    poligon_apikey: str,
+    lunchmoney_apikey: str,
+) -> dict:
+    print("get_stock_price_and_update_lunchmoney")
     stock_price = get_stock_price(stock_code, poligon_apikey)
     usd_to_eur = get_usd_to_eur_price(poligon_apikey)
     value = calculate_value(stock_price, volume, usd_to_eur)
@@ -68,4 +79,4 @@ if __name__ == "__main__":
             )
             print(result)
     else:
-        raise ("Too less attributes...")
+        raise BaseException("Too less attributes...")
