@@ -5,7 +5,6 @@ import requests
 POLYGON_ENDPOINT = "https://api.polygon.io/v2/aggs/ticker/"
 LUNCHMONEY_ENDPOINT = "https://dev.lunchmoney.app/v1/assets/"
 
-
 def parse_yaml(filename):
     print("Parsing YAML")
     with open(filename) as file:
@@ -30,9 +29,16 @@ def get_stock_price(stock_code, apikey):
     return previos_close_price
 
 
-def calculate_value(stock_price, amount):
+def get_usd_to_eur_price(apikey):
+    currency_pair = "C:USDEUR"
+    endpoint = get_poligon_endpoint(currency_pair, apikey)
+    previos_close_price = requests.get(endpoint).json()["results"][0]["c"]
+    return previos_close_price
+
+
+def calculate_value(stock_price, amount, ust_to_eur):
     print("calculate_value")
-    return stock_price * amount
+    return stock_price * amount * ust_to_eur
 
 
 def update_lunchmoney(asset_id, apikey, amount):
@@ -48,7 +54,8 @@ def get_stock_price_and_update_lunchmoney(
 ):
     print("get_stock_price_and_update_lunchmoney")
     stock_price = get_stock_price(stock_code, poligon_apikey)
-    value = calculate_value(stock_price, volume)
+    usd_to_eur = get_usd_to_eur_price(poligon_apikey)
+    value = calculate_value(stock_price, volume, usd_to_eur)
     return update_lunchmoney(asset_id, lunchmoney_apikey, value)
 
 
