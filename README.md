@@ -4,7 +4,7 @@ The idea is to have a manually created account(s) in [lunchmoney.app](https://lu
 - Create a manual account in [lunchmoney.app](https://lunchmoney.app)
 - Get the AssetID for the account. The easiest way is to open a transaction window and copy paste it from URL. Example: https://my.lunchmoney.app/transactions/2024/12?time=all&match=any&asset=12345
 - Get the API key for [lunchmoney.app](https://lunchmoney.app) here https://my.lunchmoney.app/developers (free)
-- Get the API key for [polygon.io](https://polygon.io). Just register and they will give you one
+- Get the API key for [polygon.io](https://polygon.io). Just register and they will give you one (free)
 - Fork the repository
 - Create two new secreats in Settings - Secrets and variables - Actions - Repository secrets
   - LUNCHMONEY_API
