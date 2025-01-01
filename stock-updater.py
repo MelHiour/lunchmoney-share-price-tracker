@@ -20,7 +20,9 @@ def get_poligon_endpoint(stock_code: str, apikey: str) -> str:
 
 
 def get_lunchmoney_endpoint(asset_id: int) -> str:
-    logging.info("Generating lunchmoney.app API endpoint for Asset ID: {}".format(asset_id))
+    logging.info(
+        "Generating lunchmoney.app API endpoint for Asset ID: {}".format(asset_id)
+    )
     return LUNCHMONEY_ENDPOINT + str(asset_id)
 
 
@@ -40,7 +42,11 @@ def get_usd_to_eur_price(apikey: str) -> int:
 
 
 def calculate_value(stock_price: int, amount: int, ust_to_eur: int) -> int:
-    logging.info("Calculating the asset value using stock price of {}, amount of {} and EUR price of {}".format(stock_price, amount, ust_to_eur))
+    logging.info(
+        "Calculating the asset value using stock price of {}, amount of {} and EUR price of {}".format(
+            stock_price, amount, ust_to_eur
+        )
+    )
     return stock_price * amount * ust_to_eur
 
 
