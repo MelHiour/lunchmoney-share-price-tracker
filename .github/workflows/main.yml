@@ -39,6 +39,7 @@ jobs:
     - name: Run mypy
       uses: jpetrucciani/mypy-check@master
       with:
+        path: '.'
         mypy_flags: '--ignore-imports'
 
   build_docker_images:
